@@ -1,3 +1,4 @@
+const {join} = require("path");
 exports.config = {
     //
     // ====================
@@ -50,7 +51,7 @@ exports.config = {
     // https://saucelabs.com/platform/platform-configurator
     //
     capabilities: [{
-    
+
         // maxInstances can get overwritten per capability. So if you have an in-house Selenium
         // grid with only 5 firefox instances available you can make sure that not more than
         // 5 instances get started at a time.
@@ -110,8 +111,36 @@ exports.config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: ['chromedriver','geckodriver','docker','image-comparison'],
-    
+    services: ['chromedriver', 'geckodriver', 'docker', [
+        "image-comparison",
+        // The options
+        {
+            // Some options, see the docs for more
+            baselineFolder: join(process.cwd(), "./tests/sauceLabsBaseline/"),
+            formatImageName: "{tag}-{logName}-{width}x{height}",
+            screenshotPath: join(process.cwd(), ".tmp/"),
+            savePerInstance: true,
+            autoSaveBaseline: true,
+            blockOutStatusBar: true,
+            blockOutToolBar: true,
+            // NOTE: When you are testing a hybrid app please use this setting
+            isHybridApp: true,
+            // Options for the tabbing image
+            tabbableOptions: {
+                circle: {
+                    size: 18,
+                    fontSize: 18,
+                    // ...
+                },
+                line: {
+                    color: "#ff221a", // hex-code or for example words like `red|black|green`
+                    width: 3,
+                },
+            },
+            // ... more options
+        },
+    ],],
+
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
     // see also: https://webdriver.io/docs/frameworks
@@ -132,10 +161,9 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
-    reporters: ['spec',['allure', {outputDir: 'allure-results'}]],
+    reporters: ['spec', ['allure', {outputDir: 'allure-results'}]],
 
 
-    
     //
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/
@@ -237,7 +265,7 @@ exports.config = {
      * @param {Boolean} result.passed    true if test has passed, otherwise false
      * @param {Object}  result.retries   informations to spec related retries, e.g. `{ attempts: 0, limit: 0 }`
      */
-    afterTest: async function(test, context, { error, result, duration, passed, retries }) {
+    afterTest: async function (test, context, {error, result, duration, passed, retries}) {
         if (!passed) {
             await browser.takeScreenshot();
         }
@@ -287,10 +315,10 @@ exports.config = {
     // onComplete: function(exitCode, config, capabilities, results) {
     // },
     /**
-    * Gets executed when a refresh happens.
-    * @param {String} oldSessionId session ID of the old session
-    * @param {String} newSessionId session ID of the new session
-    */
+     * Gets executed when a refresh happens.
+     * @param {String} oldSessionId session ID of the old session
+     * @param {String} newSessionId session ID of the new session
+     */
     // onReload: function(oldSessionId, newSessionId) {
     // }
 }
