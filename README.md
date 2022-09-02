@@ -23,7 +23,7 @@ Parallel execution of tests realized by the Capabilities ability in the WDIO. Ev
 
 ## Results Reporting
 Report of the run the test cases/suites could be seen in the Allure report. To see the result run the following command:
-
+run: npm i allure-commandline before the report generation
 ## Image Comprassion Service
 In order to test pixel to pixel you can use Image Comprassion service methods. With the first run of the test-cases needed sreenshots will be automatically saved to the sauceLabsBaseline folder. You can put the screenshots in the folder by yourself.
 

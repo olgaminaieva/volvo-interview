@@ -15,6 +15,12 @@
         "wdio-image-comparison-service": "^4.0.0"
     },
     "scripts": {
-        "wdio": "wdio run wdio.conf.js"
+        "wdio": "rimraf allure-report && rimraf allure-results && wdio run wdio.conf.js",
+        "report": "allure generate ./allure-results --clean && allure open",
+        "docker:start": "docker-compose up"
+    },
+    "dependencies": {
+        "allure-commandline": "^2.18.1",
+        "rimraf": "^3.0.2"
     }
 }
