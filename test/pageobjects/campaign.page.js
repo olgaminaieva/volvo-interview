@@ -50,8 +50,6 @@ class CampaignPage extends Page {
    * overwrite specific options to adapt it to page object
    */
   async open() {
-    await browser.setWindowSize(1920, 1080);
-
     return super.open("v/car-safety/a-million-more");
   }
 }
