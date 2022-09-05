@@ -56,13 +56,6 @@ describe("Campaign Page Verification", () => {
     );
   });
 
-  // it("Should create screenshot fo Icons Section", async () => {
-  //   await CampaignPage.iconsTextSection.scrollIntoView({
-  //     block: "center",
-  //   });
-  //   await browser.saveScreen("Icons Section", {});
-  // });
-
   it("the Icons Section should be displayed correctly", async () => {
     await CampaignPage.iconsTextSection.scrollIntoView({
       block: "center",
@@ -70,19 +63,6 @@ describe("Campaign Page Verification", () => {
     await expect(CampaignPage.iconsTextSection).toBeDisplayed();
     await expect(await browser.checkScreen("Icons Section")).toEqual(0);
   });
-
-  // it("the Icons Section should be displayed correctly", async () => {
-  //   await CampaignPage.iconsTextSection.scrollIntoView({
-  //     block: "center",
-  //   });
-  //   await expect(CampaignPage.iconsTextSection).toBeDisplayed();
-  //   await expect(
-  //     await browser.checkElement(
-  //       await CampaignPage.iconsTextSection,
-  //       "Icons Section"
-  //     )
-  //   ).toEqual(0);
-  // });
 
   it("the Car Safety link should be displayed", async () => {
     await expect(CampaignPage.carSafetyLink).toBeDisplayed();

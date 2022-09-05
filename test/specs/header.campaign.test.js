@@ -19,13 +19,6 @@ describe("Campaign Page Header Verification", () => {
     );
   });
 
-  // it("save element check", async () => {
-  //   await CampaignPage.ourCarsLink.waitForClickable();
-  //   await CampaignPage.ourCarsLink.click();
-  //   await expect(CampaignPage.ourCarsPage).toBeDisplayed();
-  //   await browser.saveElement(await CampaignPage.ourCarsPage, "Our Cars Page");
-  // });
-
   it("Our Cars page should be displayed after Our Cars link click", async () => {
     await CampaignPage.ourCarsLink.waitForClickable();
     await CampaignPage.ourCarsLink.click();
@@ -37,14 +30,6 @@ describe("Campaign Page Header Verification", () => {
       )
     ).toEqual(0);
   });
-
-  // it("Generate the Screenshot for Menu link", async () => {
-  //   await CampaignPage.menuLink.waitForClickable();
-  //   await CampaignPage.menuLink.click();
-  //   await browser.saveScreen("Menu Bar header page", {
-  //     hideElements: [await CampaignPage.mainVideo],
-  //   });
-  // });
 
   it("Menu page should be displayed after the user clicks Menu link", async () => {
     await CampaignPage.menuLink.waitForClickable();
