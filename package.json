@@ -9,15 +9,17 @@
         "@wdio/mocha-framework": "^7.24.0",
         "@wdio/spec-reporter": "^7.24.0",
         "chromedriver": "^105.0.0",
+        "prettier": "2.7.1",
         "wdio-chromedriver-service": "^7.3.2",
         "wdio-docker-service": "^3.2.1",
         "wdio-geckodriver-service": "^3.0.4",
         "wdio-image-comparison-service": "^4.0.0"
     },
     "scripts": {
-        "wdio": "rimraf allure-report && rimraf allure-results && wdio run wdio.conf.js",
+        "test": "rimraf allure-report && rimraf allure-results && wdio run wdio.conf.js",
         "report": "allure generate ./allure-results --clean && allure open",
-        "docker:start": "docker-compose up"
+        "docker:start": "docker-compose up",
+        "docker:stop": "docker-compose down"
     },
     "dependencies": {
         "allure-commandline": "^2.18.1",
