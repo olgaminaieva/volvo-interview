@@ -61,7 +61,7 @@ describe("Campaign Page Verification", () => {
       block: "center",
     });
     await expect(CampaignPage.iconsTextSection).toBeDisplayed();
-    await browser.$('[data-autoid="IconTextList:icon"]').waitForDisplayed();
+    //await browser.$('[data-autoid="IconTextList:icon"]').waitForDisplayed();
     await expect(await browser.checkScreen("Icons Section")).toEqual(0);
   });
 

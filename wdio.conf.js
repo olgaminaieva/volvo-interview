@@ -1,4 +1,6 @@
 const { join } = require("path");
+const allure = require("allure-commandline");
+
 exports.config = {
   //
   // ====================
@@ -58,29 +60,13 @@ exports.config = {
       browserName: "chrome",
       acceptInsecureCerts: true,
       "goog:chromeOptions": {
-        args: [
-          //"--no-sandbox",
-          //"--disable-infobars",
-          //"--headless",
-          //"--disable-gpu",
-          "--window-size=1920,1080",
-        ],
+        args: ["--no-sandbox", "--disable-dev-shm-usage"],
       },
-      // If outputDir is provided WebdriverIO can capture driver session logs
-      // it is possible to configure which logTypes to include/exclude.
-      // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
-      // excludeDriverLogs: ['bugreport', 'server'],
     },
     {
-      maxInstances: 3,
+      maxInstances: 5,
       browserName: "firefox",
-      "moz:firefoxOptions": {
-        args: [
-          //'-headless',
-          "-width=1920",
-          "-height=1080",
-        ],
-      },
+      acceptInsecureCerts: true,
     },
   ],
   //
@@ -114,7 +100,7 @@ exports.config = {
   // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
   // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
   // gets prepended directly.
-  baseUrl: "http://localhost",
+  baseUrl: "https://www.volvocars.com/intl/",
   //
   // Default timeout for all waitFor* commands.
   waitforTimeout: 10000,
@@ -131,34 +117,18 @@ exports.config = {
   // your test setup with almost no effort. Unlike plugins, they don't add new
   // commands. Instead, they hook themselves up into the test process.
   services: [
-    //'chromedriver', 'geckodriver',
-    "docker",
+    "chromedriver",
+    "geckodriver",
     [
       "image-comparison",
-      // The options
       {
-        baselineFolder: join(process.cwd(), "./tests/sauceLabsBaseline/"),
+        baselineFolder: join(process.cwd(), "./tests/baseLineImages/"),
         formatImageName: "{tag}-{logName}-{width}x{height}",
         screenshotPath: join(process.cwd(), ".tmp/"),
         savePerInstance: true,
         autoSaveBaseline: true,
         blockOutStatusBar: true,
         blockOutToolBar: true,
-        // NOTE: When you are testing a hybrid app please use this setting
-        isHybridApp: true,
-        // Options for the tabbing image
-        tabbableOptions: {
-          circle: {
-            size: 18,
-            fontSize: 18,
-            // ...
-          },
-          line: {
-            color: "#ff221a", // hex-code or for example words like `red|black|green`
-            width: 3,
-          },
-        },
-        // ... more options
       },
     ],
   ],
@@ -336,8 +306,24 @@ exports.config = {
    * @param {Array.<Object>} capabilities list of capabilities details
    * @param {<Object>} results object containing test results
    */
-  // onComplete: function(exitCode, config, capabilities, results) {
-  // },
+  onComplete: function (exitCode, config, capabilities, results) {
+    const reportError = new Error("Could not generate Allure report");
+    const generation = allure(["generate", "allure_results", "--clean"]);
+    return new Promise((resolve, reject) => {
+      const generationTimeout = setTimeout(() => reject(reportError), 5000);
+
+      generation.on("exit", function (exitCode) {
+        clearTimeout(generationTimeout);
+
+        if (exitCode !== 0) {
+          return reject(reportError);
+        }
+
+        console.log("Allure report successfully generated");
+        resolve();
+      });
+    });
+  },
   /**
    * Gets executed when a refresh happens.
    * @param {String} oldSessionId session ID of the old session

@@ -11,13 +11,15 @@ framework with page object pattern and Docker images set-up.
 - java
 - docker (https://www.docker.com/get-started/)
 
-## How to start
+## How to run test-cases in the Docker
 
-1. npm install
-2. npm run docker:start
-3. npm run test
-4. npm run report
-5. npm run docker:stop
+1. npm run build
+2. npm run run
+3. npm run docker:start Note: you need to wait until the message: 
+'Node has been added'
+4. npm run test
+5. npm run report
+6. npm run docker:stop
 
 ## Docker notes
 
@@ -28,7 +30,8 @@ framework with page object pattern and Docker images set-up.
 ## Parallel execution of tests
 
 Parallel execution of tests realized by the capabilities option
-in the wdio.conf.js file.
+in the wdio.conf.js file and replicas option in the 
+docker-compose file.
 Every single test file will be run in parallel.
 You can adjust Capabilities depends on the need by adjusting
 maxInstances value in the wdio.conf.js file for desired browser.
