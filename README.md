@@ -15,23 +15,12 @@ framework with page object pattern and Docker images set-up.
 
 1. npm run build
 2. npm run run
-3. npm run docker:start Note: you need to wait until the message: 
-'Node has been added'
-4. npm run test
-5. npm run report
-6. npm run docker:stop
-
-## Docker notes
-
-1. Install Docker on the local machine: https://www.docker.com/get-started/
-2. run the command: docker-compose up
-3. run wdio
+3. npm run report:run 
 
 ## Parallel execution of tests
 
 Parallel execution of tests realized by the capabilities option
-in the wdio.conf.js file and replicas option in the 
-docker-compose file.
+in the wdio.conf.js file.
 Every single test file will be run in parallel.
 You can adjust Capabilities depends on the need by adjusting
 maxInstances value in the wdio.conf.js file for desired browser.
@@ -41,8 +30,8 @@ Please consider to add new test files if needed with the project growth.
 ## Results Reporting
 
 Report of the run the test cases/suites could be seen in the
-Allure report. To see the run results run the following command: {command}
-??run: npm i allure-commandline before the report generation
+Allure report. To see the run results run the following command: 
+npm run report:run 
 
 ## Image Comparison Service
 

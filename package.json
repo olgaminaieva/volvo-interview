@@ -20,9 +20,9 @@
     "build": "docker build -t volvoimage -f Dockerfile .",
     "run": "docker run --name volvodocker -it volvoimage",
     "clean:report": "rimraf ./allure-report && rimraf ./allure-results",
-    "report:generate": "npm run clean:report && allure generate ./allure-results --clean",
-    "report:run": "npm run clean:report && docker cp volvodocker:/usr/src/app/allure-results allure-results && allure open",
-    "test": "wdio run wdio.conf.js",
+    "report:generate": "allure generate ./allure-results --clean",
+    "report:run": "npm run clean:report && docker cp volvodocker:/usr/src/app/allure-report allure-report && allure open",
+    "test": "npm run clean:report && wdio run wdio.conf.js",
     "docker:start": "docker-compose up",
     "docker:stop": "docker-compose down"
   },

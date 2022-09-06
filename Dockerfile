@@ -95,4 +95,4 @@ RUN ls
 
 # ON RUNNING THE IMAGE THIS COMMAND WILL BE TRIGGERED BY DEFAULT
 
-CMD xvfb-run --server-args="-screen 0 1920x1080x24" npm run test & npm run report:generate
+CMD xvfb-run --server-args="-screen 0 1920x1080x24" npm run test && npm run report:generate
