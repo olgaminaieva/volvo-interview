@@ -6,7 +6,7 @@ exports.config = {
   maxInstances: 10,
   capabilities: [
     {
-      maxInstances: 5,
+      maxInstances: 3,
       browserName: "chrome",
       acceptInsecureCerts: true,
       "goog:chromeOptions": {
@@ -19,7 +19,7 @@ exports.config = {
       },
     },
     {
-      maxInstances: 5,
+      maxInstances: 3,
       browserName: "firefox",
       acceptInsecureCerts: true,
       "moz:firefoxOptions": {

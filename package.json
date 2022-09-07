@@ -17,14 +17,17 @@
     "allure-commandline": "^2.18.1"
   },
   "scripts": {
-    "docker:build": "docker build -t volvoimage -f Dockerfile .",
-    "docker:run": "docker run --name volvodocker -it volvoimage",
-    "docker:report:copy": "docker cp volvodocker:/usr/src/app/allure-results allure-results",
-    "report": "allure generate ./allure-results --clean && allure open",
+    "clean:report": "rimraf ./allure-report && rimraf ./allure-results",
     "test": "npm run clean:report && wdio run wdio.conf.js",
-    "docker:start": "docker-compose up",
-    "docker:stop": "docker-compose down",
-    "clean:report": "rimraf ./allure-report && rimraf ./allure-results"
+    "report:generate": "allure generate ./allure-results --clean && allure open",
+
+    "docker:build": "docker build -t volvoimage -f Dockerfile .",
+    "docker:run": "docker run --name volvo-docker -it volvoimage",
+    "docker:report:copy": "npm run clean:report && docker cp volvo-docker:/usr/src/app/allure-results allure-results",
+
+    "compose:up": "docker-compose up",
+    "compose:down": "docker-compose down",
+    "compose:report:copy": "npm run clean:report && docker cp volvo-compose:/usr/src/app/allure-results allure-results"
   },
   "dependencies": {
     "allure-commandline": "^2.18.1",

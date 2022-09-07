@@ -11,11 +11,22 @@ framework with page object pattern and Docker images set-up.
 - java
 - docker (https://www.docker.com/get-started/)
 
-## How to run test-cases in the Docker
+## How to run test-cases locally
+...
 
-1. npm run build
-2. npm run run
-3. npm run report:run 
+## How to run test-cases with the Docker
+...
+
+## How to run test-cases with the Docker-compose
+...
+
+## How to generate a report from test results
+locally
+    ...
+with docker
+    ...
+with docker-compose
+    ...
 
 ## Parallel execution of tests
 
