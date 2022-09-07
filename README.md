@@ -14,28 +14,24 @@ framework with page object pattern and Docker images set-up.
 ## How to run test-cases locally
 1. npm install
 2. npm run test
-3. npm run report:generate
 
 ## How to run test-cases with the Docker
 1. npm run docker:build
 2. npm run docker:run
-3. npm run docker:report:copy
-4. npm run report:generate
 
 ## How to run test-cases with the Docker-compose
 1. npm run compose:up
-When you need to stop the containers please run the following command:
 2. npm run compose:down
 
 ## How to generate a report from test results
--locally:
-1. npm run report:generate 
--with docker:
-1. npm run docker:report:copy
-2. npm run report:generate
--with docker-compose:
-1. npm run compose:report:copy
-2. npm run report:generate
+1. locally:
+ - npm run report:generate 
+2. with docker:
+ - npm run docker:report:copy
+ - npm run report:generate
+3. with docker-compose:
+ - npm run compose:report:copy
+ - npm run report:generate
 
 ## Parallel execution of tests
 
@@ -50,7 +46,7 @@ Please consider to add new test files if needed with the project growth.
 ## Results Reporting
 
 Report of the test cases/suites run could be seen in the
-Allure report. Please see the section How to generate a report from test results
+Allure report. Please see the section: How to generate a report from test results
 
 ## Image Comparison Service
 
