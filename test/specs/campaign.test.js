@@ -1,4 +1,5 @@
 const CampaignPage = require("../pageobjects/campaign.page");
+const { Texts } = require("../constants");
 
 describe("Campaign Page Verification", () => {
   beforeEach(async () => {
@@ -12,15 +13,13 @@ describe("Campaign Page Verification", () => {
   });
 
   it("should open the Campaign page and verify the title", async () => {
-    await expect(browser).toHaveTitle(
-      "A million more | Volvo Cars - International"
-    );
+    await expect(browser).toHaveTitle(Texts.campaignPage);
   });
 
   it("the Main Text should be displayed correctly on the Campaign page", async () => {
     await CampaignPage.mainTextSection.isDisplayed();
     await expect(await CampaignPage.mainTextSection).toHaveText(
-      "Ideas that change the world are often the most controversial."
+      Texts.mainSection
     );
   });
 
@@ -30,7 +29,7 @@ describe("Campaign Page Verification", () => {
   });
 
   it("verify the Main Video button text", async () => {
-    await expect(CampaignPage.mainVideoBtnText).toHaveText("WATCH THE STORY");
+    await expect(CampaignPage.mainVideoBtnText).toHaveText(Texts.mainVideoBtn);
   });
 
   it("the play/pause button should be in play action by default", async () => {
@@ -52,7 +51,7 @@ describe("Campaign Page Verification", () => {
   it("the Text Statement section should be displayed", async () => {
     await expect(CampaignPage.textStatementSection).toBeDisplayed();
     await expect(CampaignPage.textStatementSection).toHaveTextContaining(
-      "A million more."
+      Texts.statementSection
     );
   });
 
@@ -67,22 +66,18 @@ describe("Campaign Page Verification", () => {
 
   it("the Car Safety link should be displayed", async () => {
     await expect(CampaignPage.carSafetyLink).toBeDisplayed();
-    await expect(CampaignPage.carSafetyLink).toHaveText(
-      "LEARN MORE ABOUT CAR SAFETY"
-    );
+    await expect(CampaignPage.carSafetyLink).toHaveText(Texts.carSafetyLink);
   });
 
   it("the user should be redirected to the Car Safety page after click to the link", async () => {
     await CampaignPage.carSafetyLink.click();
-    await expect(browser).toHaveTitle(
-      "Car safety | Volvo Cars - International"
-    );
+    await expect(browser).toHaveTitle(Texts.carSafetyPage);
   });
 
   it("the Video Testimonials section should be displayed", async () => {
     await expect(CampaignPage.videoTestimonialsSection).toBeDisplayed();
     await expect(CampaignPage.videoTestimonialsSection).toHaveTextContaining(
-      "One of a million"
+      Texts.videoTestimonials
     );
   });
 
@@ -90,16 +85,16 @@ describe("Campaign Page Verification", () => {
     await expect(CampaignPage.decadesOfInnovationTextSection).toBeDisplayed();
     await expect(
       CampaignPage.decadesOfInnovationTextSection
-    ).toHaveTextContaining("Decades of innovation");
+    ).toHaveTextContaining(Texts.decadesOfInnovation);
   });
 
   it("the Learn More button should be displayed", async () => {
     await expect(CampaignPage.learnMoreBtn).toBeDisplayed();
-    await expect(CampaignPage.learnMoreBtn).toHaveText("LEARN MORE");
+    await expect(CampaignPage.learnMoreBtn).toHaveText(Texts.learnMoreBtn);
   });
 
   it("the user should be redirected to the Safety innovations page by the Learn More button", async () => {
     await CampaignPage.learnMoreBtn.click();
-    await expect(browser).toHaveTitle("Safety innovations | Volvo Cars");
+    await expect(browser).toHaveTitle(Texts.safetyInnovationsPage);
   });
 });

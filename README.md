@@ -12,8 +12,9 @@ framework with page object pattern and Docker images set-up.
 - docker (https://www.docker.com/get-started/)
 
 ## How to run test-cases locally
-1. npm run test
-2. npm run report:generate
+1. npm install
+2. npm run test
+3. npm run report:generate
 
 ## How to run test-cases with the Docker
 1. npm run docker:build
@@ -27,12 +28,12 @@ When you need to stop the containers please run the following command:
 2. npm run compose:down
 
 ## How to generate a report from test results
-locally:
-1. npm run report:generate
-with docker:
+-locally:
+1. npm run report:generate 
+-with docker:
 1. npm run docker:report:copy
 2. npm run report:generate
-with docker-compose:
+-with docker-compose:
 1. npm run compose:report:copy
 2. npm run report:generate
 

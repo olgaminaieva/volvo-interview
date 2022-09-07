@@ -1,4 +1,5 @@
 const CampaignPage = require("../pageobjects/campaign.page");
+const { Texts } = require("../constants");
 
 describe("Campaign Page Header Verification", () => {
   beforeEach(async () => {
@@ -14,9 +15,7 @@ describe("Campaign Page Header Verification", () => {
   it("user should be redirected to Base page by clicking the Logo", async () => {
     await CampaignPage.logoBtn.waitForClickable();
     await CampaignPage.logoBtn.click();
-    await expect(await browser).toHaveTitle(
-      "International | Volvo Cars - International"
-    );
+    await expect(await browser).toHaveTitle(Texts.mainPage);
   });
 
   it("Our Cars page should be displayed after Our Cars link click", async () => {
