@@ -62,4 +62,4 @@ EXPOSE 4444
 RUN npm install
 
 
-CMD xvfb-run --server-args="-screen 0 1920x1080x24" npm run test && npm run report
+CMD xvfb-run npm run test && npm run report:generate

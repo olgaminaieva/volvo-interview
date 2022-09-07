@@ -21,7 +21,6 @@ framework with page object pattern and Docker images set-up.
 
 ## How to run test-cases with the Docker-compose
 1. npm run compose:up
-2. npm run compose:down
 
 ## How to generate a report from test results
 1. locally:
