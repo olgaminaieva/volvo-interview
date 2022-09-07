@@ -40,7 +40,6 @@ RUN apt-get update && \
   apt-get clean;
 
 # INSTALL CHROME
-# Chrome dependencies
 RUN apt-get update
 ARG CHROME_VERSION=104.0.5112.79-1
 RUN wget -O /usr/src/google-chrome-stable_current_amd64.deb "http://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${CHROME_VERSION}_amd64.deb" \

@@ -12,21 +12,29 @@ framework with page object pattern and Docker images set-up.
 - docker (https://www.docker.com/get-started/)
 
 ## How to run test-cases locally
-...
+1. npm run test
+2. npm run report:generate
 
 ## How to run test-cases with the Docker
-...
+1. npm run docker:build
+2. npm run docker:run
+3. npm run docker:report:copy
+4. npm run report:generate
 
 ## How to run test-cases with the Docker-compose
-...
+1. npm run compose:up
+When you need to stop the containers please run the following command:
+2. npm run compose:down
 
 ## How to generate a report from test results
-locally
-    ...
-with docker
-    ...
-with docker-compose
-    ...
+locally:
+1. npm run report:generate
+with docker:
+1. npm run docker:report:copy
+2. npm run report:generate
+with docker-compose:
+1. npm run compose:report:copy
+2. npm run report:generate
 
 ## Parallel execution of tests
 
@@ -40,19 +48,16 @@ Please consider to add new test files if needed with the project growth.
 
 ## Results Reporting
 
-Report of the run the test cases/suites could be seen in the
-Allure report. To see the run results run the following command: 
-npm run report:run 
+Report of the test cases/suites run could be seen in the
+Allure report. Please see the section How to generate a report from test results
 
 ## Image Comparison Service
 
 In order to perform pixel-by-pixel testing you can use
 Image Comparison service methods. With the first run of the
 test-cases needed screenshots will be automatically saved to the
-sauceLabsBaseline folder. You can put the screenshots in the folder
+baseLineImages folder. You can put the screenshots in the folder
 by yourself.
 Note: only execute visual comparison on screenshots that
-have been taken with the same platform. Just delete the Screenshot files
-in the sauceLabsBaseline folder before every run on the new platform
+have been taken with the same platform.
 
-https://www.npmjs.com/package/webdriver-manager

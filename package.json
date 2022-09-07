@@ -27,7 +27,7 @@
 
     "compose:up": "docker-compose up",
     "compose:down": "docker-compose down",
-    "compose:report:copy": "npm run clean:report && docker cp volvo-compose:/usr/src/app/allure-results allure-results"
+    "compose:report:copy": "npm run clean:report && docker cp e2e:/usr/src/app/allure-results allure-results"
   },
   "dependencies": {
     "allure-commandline": "^2.18.1",
